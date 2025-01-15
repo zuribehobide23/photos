@@ -1,6 +1,7 @@
 let photos = document.querySelector("#image")
 
-let ArrayOfPhotos = ["url(images/1.jpg)", 
+let ArrayOfPhotos = [
+    "url(images/1.jpg)", 
     "url(images/2.jpg)", 
     "url(images/3.jpg)", 
     "url(images/4.jpg)",
@@ -12,14 +13,21 @@ let ArrayOfPhotos = ["url(images/1.jpg)",
     "url(images/10.jpg)",
     "url(images/11.jpg)",
     "url(images/12.jpg)",
-    "url(images/13.jpg)"]
+    "url(images/13.jpg)"
+]
 
 let index = 0;
 
 photos.style.backgroundImage = ArrayOfPhotos[index];
 
-function irudiakAldatu(){
+function changePhotos(){
     index = (index + 1) % ArrayOfPhotos.length;
     photos.style.backgroundImage = ArrayOfPhotos[index];  
 }
-let erloju = setInterval(irudiakAldatu, 5000);
+
+document.addEventListener("keydown", (event) => {
+    if (event.code === "Space" || event.code === "Enter") {
+        event.preventDefault();
+        changePhotos();
+    }
+});
